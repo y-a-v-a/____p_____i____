@@ -1,8 +1,22 @@
-# PI
+# π
 
-π-bot
-tweet decimals to twitter
-starting from 3.14
+π-bot tweets decimals to twitter starting from 3.14
 
-http://dghubble.com/blog/posts/twitter-app-write-access-and-bots/
+A `config.js` is missing in the Git repository. That is on purpose. I don't want to expose auth keys here. If you fork this repo, add it! Should look like this:
 
+```javascript
+module.exports = {
+  consumer_key: 'qwerty',
+  consumer_secret: 'asdfgh',
+  access_token_key: 'zxcvbn',
+  access_token_secret: '123456'
+};
+```
+
+## Wish list
+
+Calculate decimals instead of cutting 140 of them from a long pre stored π.
+
+## License
+
+WTFPL: http://www.wtfpl.net/txt/copying/
