@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const fs = require('fs');
 
 var Twitter = require('twitter');
 var BIG_PI = require('./pi');
@@ -15,16 +16,19 @@ var client = new Twitter({
   //console.log(arguments);
 //});
 
+const pidIndex = Number(fs.readFileSync('./pi-pid', {encoding: 'utf8'}).trim());
+
 var tweetLength = 140;
-var index = 28; // FIRST UPDATE then post!
+var index = pidIndex; // FIRST UPDATE then post!
 var offset = index * tweetLength;
 
 var tweet = BIG_PI.substr(offset, tweetLength);
 // console.log(tweet, tweet.length);
 
 client.post('statuses/update',
-  { status: tweet},
+  { status: tweet },
   function() {
     console.log(arguments);
+    fs.writeFileSync('./pi-pid', `${index + 1}`);
   }
 );
